@@ -21,7 +21,7 @@ def push(content):
         json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
         resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
         print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
-    elif webhookurl != '1':
+    elif Webhook != '1':
         headers = {"Content-Type": "application/json"}
         data = {
         "msgtype": "text",
@@ -29,7 +29,7 @@ def push(content):
             "content": content
             }
         }
-        r = requests.post(webhookurl, headers=headers, json=data)
+        r = requests.post(Webhook, headers=headers, json=data)
         send_weixin("ikuuu签到")
         print('推送完成')
     else:
