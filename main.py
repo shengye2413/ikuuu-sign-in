@@ -9,6 +9,8 @@ passwd = os.environ.get('PASSWD')
 SCKEY = os.environ.get('SCKEY')
 # PUSHPLUS
 Token = os.environ.get('TOKEN')
+# 企业微信
+Webhookurl = os.environ.get('WEBHOOK')
 def push(content):
     if SCKEY != '1':
         url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
@@ -19,17 +21,25 @@ def push(content):
         json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
         resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
         print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
+    elif Webhookurl != '1':
+        payload = {
+        "msgtype": "text",
+        "text": {
+            "content": "ikuuu签到"+content
+        }
+        resp = HTTP.post(webhookurl, JSON.stringify(payload))
+        print('推送完成')
     else:
         print('未使用消息推送推送！')
 
 # 会不定时更新域名，记得Sync fork
 
-login_url = 'https://ikuuu.me/auth/login'
-check_url = 'https://ikuuu.me/user/checkin'
-info_url = 'https://ikuuu.me/user/profile'
+login_url = 'https://ikuuu.pw/auth/login'
+check_url = 'https://ikuuu.pw/user/checkin'
+info_url = 'https://ikuuu.pw/user/profile'
 
 header = {
-        'origin': 'https://ikuuu.me',
+        'origin': 'https://ikuuu.pw',
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 }
 data = {
