@@ -10,7 +10,7 @@ SCKEY = os.environ.get('SCKEY')
 # PUSHPLUS
 Token = os.environ.get('TOKEN')
 # 企业微信
-webhookurl = os.environ.get('WEBHOOK')
+Webhook = os.environ.get('WEBHOOK')
 def push(content):
     if SCKEY != '1':
         url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
