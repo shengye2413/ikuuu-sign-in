@@ -16,7 +16,6 @@ def push(content):
         }
     }
     r = requests.post(Webhook, headers=headers, json=data)
-    send_weixin("ikuuu签到")
     print('推送完成')
 
 # 会不定时更新域名，记得Sync fork
