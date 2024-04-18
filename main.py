@@ -10,7 +10,7 @@ SCKEY = os.environ.get('SCKEY')
 # PUSHPLUS
 Token = os.environ.get('TOKEN')
 # 企业微信
-Webhook = os.environ.get('WEBHOOK')
+WECHAT_WEBHOOK_URL = os.environ.get('WEBHOOK')
 def push(content):
     if SCKEY != '1':
         url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
@@ -21,16 +21,16 @@ def push(content):
         json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
         resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
         print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
-    elif Webhook != '1':
-        headers = {"Content-Type": "application/json"}
+    elif WECHAT_WEBHOOK_URL != '1':
+        headers = {'Content-Type': 'application/json'}
         data = {
-        "msgtype": "text",
-        "text": {
-            "content": content，
+            "msgtype": "text",
+            "text": {
+                "content": content
             }
         }
-        r = requests.post(Webhook, headers=headers, json=data)
-        print('推送完成')
+        r = requests.post(WECHAT_WEBHOOK_URL, headers=headers, json=data)
+        print('企业微信推送完成')
     else:
         print('未使用消息推送推送！')
 
