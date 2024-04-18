@@ -26,11 +26,10 @@ def push(content):
         data = {
         "msgtype": "text",
         "text": {
-            "content": content
+            "content": content，
             }
         }
         r = requests.post(Webhook, headers=headers, json=data)
-        send_weixin("ikuuu签到")
         print('推送完成')
     else:
         print('未使用消息推送推送！')
