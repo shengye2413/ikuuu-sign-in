@@ -27,7 +27,7 @@ def push(content):
         "text": {
             "content": "ikuuu签到"+content
         }
-        resp = HTTP.post(webhookurl, JSON.stringify(payload))
+        resp = HTTP.post(Webhookurl, JSON.stringify(payload))
         print('推送完成')
     else:
         print('未使用消息推送推送！')
