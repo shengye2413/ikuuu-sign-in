@@ -27,6 +27,7 @@ def push(content):
         "msgtype": "text",
         "text": {
             "content": content
+            }
         }
         r = requests.post(webhookurl, headers=headers, json=data)
         send_weixin("ikuuu签到")
