@@ -8,18 +8,15 @@ passwd = os.environ.get('PASSWD')
 # 企业微信
 WECHAT_WEBHOOK_URL = os.environ.get('WEBHOOK')
 def push(content):
-    if WECHAT_WEBHOOK_URL != ''
-        headers = {'Content-Type': 'application/json'}
-        data = {
-            "msgtype": "text",
-            "text": {
-                "content": content
-            }
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        "msgtype": "text",
+        "text": {
+            "content": content
         }
-        r = requests.post(WECHAT_WEBHOOK_URL, headers=headers, json=data)
-        print('企业微信推送完成')
-    else:
-        print('未使用消息推送推送！')
+    }
+    r = requests.post(WECHAT_WEBHOOK_URL, headers=headers, json=data)
+    print('企业微信推送完成')
 
 # 会不定时更新域名，记得Sync fork
 
