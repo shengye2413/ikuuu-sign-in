@@ -6,34 +6,34 @@ email = os.environ.get('EMAIL')
 # 配置用户名对应的密码 和上面的email对应上
 passwd = os.environ.get('PASSWD')
 # server酱
-# SCKEY = os.environ.get('SCKEY')
+SCKEY = os.environ.get('SCKEY')
 # PUSHPLUS
-# Token = os.environ.get('TOKEN')
+Token = os.environ.get('TOKEN')
 # 企业微信
 webhookurl = os.environ.get('WEBHOOK')
 def push(content):
-#     if SCKEY != '1':
-#         url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
-#         requests.post(url)
-#         print('推送完成')
-#     elif Token != '1':
-#         headers = {'Content-Type': 'application/json'}
-#         json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
-#         resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
-#         print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
-#     elif webhookurl != '1':
-    headers = {"Content-Type": "application/json"}
-    data = {
-    "msgtype": "text",
-    "text": {
-        "content": content
+    if SCKEY != '1':
+        url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
+        requests.post(url)
+        print('推送完成')
+    elif Token != '1':
+        headers = {'Content-Type': 'application/json'}
+        json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
+        resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
+        print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
+    elif webhookurl != '1':
+        headers = {"Content-Type": "application/json"}
+        data = {
+        "msgtype": "text",
+        "text": {
+            "content": content
+            }
         }
-    }
-    r = requests.post(webhookurl, headers=headers, json=data)
-    send_weixin("ikuuu签到")
-    print('推送完成')
-    # else:
-    #     print('未使用消息推送推送！')
+        r = requests.post(webhookurl, headers=headers, json=data)
+        send_weixin("ikuuu签到")
+        print('推送完成')
+    else:
+        print('未使用消息推送推送！')
 
 # 会不定时更新域名，记得Sync fork
 
