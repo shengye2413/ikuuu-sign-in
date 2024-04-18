@@ -5,23 +5,10 @@ session = requests.session()
 email = os.environ.get('EMAIL')
 # 配置用户名对应的密码 和上面的email对应上
 passwd = os.environ.get('PASSWD')
-# server酱
-SCKEY = os.environ.get('SCKEY')
-# PUSHPLUS
-Token = os.environ.get('TOKEN')
 # 企业微信
 WECHAT_WEBHOOK_URL = os.environ.get('WEBHOOK')
 def push(content):
-    if SCKEY != '':
-        url = "https://sctapi.ftqq.com/{}.send?title={}&desp={}".format(SCKEY, 'ikuuu签到', content)
-        requests.post(url)
-        print('推送完成')
-    elif Token != '':
-        headers = {'Content-Type': 'application/json'}
-        json = {"token": Token, 'title': 'ikuuu签到', 'content': content, "template": "json"}
-        resp = requests.post(f'http://www.pushplus.plus/send', json=json, headers=headers).json()
-        print('push+推送成功' if resp['code'] == 200 else 'push+推送失败')
-    elif WECHAT_WEBHOOK_URL != '':
+    if WECHAT_WEBHOOK_URL != ''
         headers = {'Content-Type': 'application/json'}
         data = {
             "msgtype": "text",
