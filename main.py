@@ -5,18 +5,6 @@ session = requests.session()
 email = os.environ.get('EMAIL')
 # 配置用户名对应的密码 和上面的email对应上
 passwd = os.environ.get('PASSWD')
-# 企业微信
-WECHAT_WEBHOOK_URL = os.environ.get('WEBHOOK')
-def push(content):
-    headers = {'Content-Type': 'application/json'}
-    data = {
-        "msgtype": "text",
-        "text": {
-            "content": content
-        }
-    }
-    r = requests.post(WECHAT_WEBHOOK_URL, headers=headers, json=data)
-    print('企业微信推送完成')
 
 # 会不定时更新域名，记得Sync fork
 
