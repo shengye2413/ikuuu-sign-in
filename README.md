@@ -1,6 +1,6 @@
 # ikuuu每日签到
 
-本项目fork自<a href = 'https://github.com/bighammer-link/jichang_dailycheckin'>此处</a>,在此感谢！
+本项目fork自<a href = 'https://github.com/bighammer-link/jichang_dailycheckin'>此处</a>做出少量修改,在此感谢！
 ## 推送
  采用企业微信推送方式
 
