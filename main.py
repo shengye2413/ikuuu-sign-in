@@ -12,7 +12,7 @@ def push(content):
     data = {
     "msgtype": "text",
     "text": {
-        "content": "ikuuu签到" + content
+        "content": "ikuuu签到\n" + content
         }
     }
     r = requests.post(Webhook, headers=headers, json=data)
